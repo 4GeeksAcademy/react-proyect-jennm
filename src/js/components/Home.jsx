@@ -1,26 +1,51 @@
+{/* aqui estamos importando cada parte de la pagina para "vincular" */ }
 import React from "react";
+import Navbar from "./Navbar.jsx";
+import Jumbotron from "./Jumbotron.jsx";
+import Card from "./Card.jsx";
+import Footer from "./Footer.jsx"
 
-//include images into your bundle
-import rigoImage from "../../img/rigo-baby.jpg";
+{/* aqui cambio todo para ir dandole forma a las cartas */ }
+const cards = [
+	{
+		image: "https://picsum.photos/id/10/200/300",
+		title: "Card Title",
+		description: "Lorem kkfioppsjskjkss",
+	},
+	{
+		image: "https://picsum.photos/id/20/200/300",
+		title: "Card Title",
+		description: "Lorem kkfioppsjskjkss",
+	},
+	{
+		image: "https://picsum.photos/id/30/200/300",
+		title: "Card Title",
+		description: "Lorem kkfioppsjskjkss",
+	},
+	{
+		image: "https://picsum.photos/id/40/200/300",
+		title: "Card Title",
+		description: "Lorem kkfioppsjskjkss",
+	},
+];
 
-//create your first component
+// esto lo principal de la pagina 
 const Home = () => {
 	return (
 		<div className="text-center">
-            
-
-			<h1 className="text-center mt-5">Hello Rigo!</h1>
-			<p>
-				<img src={rigoImage} />
-			</p>
-			<a href="#" className="btn btn-success">
-				If you see this green button... bootstrap is working...
-			</a>
-			<p>
-				Made by{" "}
-				<a href="http://www.4geeksacademy.com">4Geeks Academy</a>, with
-				love!
-			</p>
+			<Navbar />
+			<Jumbotron />
+			
+			<div className="container mt-4">
+				<div className="row">
+					{cards.map((item, index) => (
+						<div className="col-12 col-sm-6 col-md-4 col-lg-3 mb-4" key={index}>
+							<Card card={item} />
+						</div>
+					))}
+				</div>
+			</div>
+			<Footer />
 		</div>
 	);
 };
